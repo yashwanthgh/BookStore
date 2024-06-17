@@ -1,1 +1,25 @@
-<p>signin works!</p>
+<div class="form-container">
+    <div class="tab-container">
+      <div class="tab active">SIGNIN</div>
+    </div>
+    <form id="signin-form" [formGroup]="singinForm" (ngSubmit)="handleSignin()">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>email*</mat-label>
+        <input matInput placeholder="enter your email" formControlName="email">
+      </mat-form-field>
+      <mat-error *ngIf="submitted && signinControll['email']?.hasError('required')">Email required</mat-error>
+      <mat-error *ngIf="submitted && signinControll['email']?.hasError('email')">Incorrect Email Format</mat-error>
+      
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>password*</mat-label>
+        <input matInput placeholder="enter password" formControlName="password">
+      </mat-form-field>
+      <mat-error *ngIf="submitted && signinControll['password']?.hasError('required')">Password required</mat-error>
+      <mat-error *ngIf="submitted && signinControll['password']?.hasError('minlength')">Password must be 8 characters with special character & numbers</mat-error>
+      <div class="button-container">
+        <button mat-flat-button class="signup" routerLink="/signup">signup insted</button>
+        <button mat-flat-button class="signin" type="submit">signin</button>
+      </div>
+    </form>
+  </div>
+  

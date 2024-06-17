@@ -1,26 +1,28 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Model.RegisterationModel;
+using Model.LoginModel;
 using Model.ResponseModels;
+using Business.Interfaces;
 
 namespace Presentation.Controllers
 {
     [Route("api/")]
     [ApiController]
-    public class RegisterationController(Business.Interfaces.IRegisteration registeration) : ControllerBase
+    public class LoginController(ILogin login) : ControllerBase
     {
-        private readonly Business.Interfaces.IRegisteration _registeration = registeration;
+        private readonly ILogin _login = login;
 
-        [HttpPost("register")]
-        public async Task<IActionResult> UserRegister(UserRegisterationModel model)
+        [HttpPost("login")]
+        public async Task<IActionResult> UserLogin(UserLoginModel model)
         {
             try
             {
-                await _registeration.UserRegister(model);
+                var token = await _login.LoginUser(model);
 
-                var response = new ResponseModel
+                var response = new ResponseModel<string>
                 {
                     Success = true,
-                    Message = "Registration successful!",
+                    Message = "Login successful!",
+                    Data = token.ToString()
                 };
                 return Ok(response);
             }
@@ -33,7 +35,6 @@ namespace Presentation.Controllers
                 };
                 return Ok(response);
             }
-
         }
     }
 }

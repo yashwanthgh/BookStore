@@ -12,6 +12,14 @@ internal class Program
 
         builder.Services.AddControllers();
 
+        // Services
+        builder.Services.AddSingleton<Repository.Context.DapperContext>();
+        builder.Services.AddScoped<Repository.Interfaces.IAuth, Repository.Services.Auth>();
+        builder.Services.AddScoped<Repository.Interfaces.ILogin, Repository.Services.Login>();
+        builder.Services.AddScoped<Business.Interfaces.ILogin, Business.Services.Login>();
+        builder.Services.AddScoped<Repository.Interfaces.IRegisteration, Repository.Services.Registeration>();
+        builder.Services.AddScoped<Business.Interfaces.IRegisteration, Business.Services.Registeration>();
+
         // Jwt 
         var jwtSettings = builder.Configuration.GetSection("JwtSetting").Get<JwtSettingModel>();
         if (jwtSettings != null)
@@ -70,6 +78,15 @@ internal class Program
             });
         });
 
+        builder.Services.AddCors(options =>
+        {
+            options.AddPolicy("AllowSpecificOrigin",
+                builder => builder
+                    .WithOrigins("http://localhost:4200")
+                    .AllowAnyMethod()
+                    .AllowAnyHeader());
+        });
+
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
 
@@ -81,6 +98,8 @@ internal class Program
             app.UseSwaggerUI();
         }
         app.UseHttpsRedirection();
+
+        app.UseCors("AllowSpecificOrigin");
 
         app.UseAuthorization();
 

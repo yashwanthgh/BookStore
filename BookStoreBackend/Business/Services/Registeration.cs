@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Business.Services
 {
-    internal class Registeration(Repository.Interfaces.IRegisteration registeration) : Interfaces.IRegisteration
+    public class Registeration(Repository.Interfaces.IRegisteration registeration) : Interfaces.IRegisteration
     {
         private readonly Repository.Interfaces.IRegisteration _registeration = registeration;
 

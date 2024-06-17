@@ -17,11 +17,11 @@ namespace Repository.Services
         {
             using (var connection = _context.CreateConnection())
             {
-                var user = await connection.QueryFirstAsync<User>("spGetUserByEmail", model.Email, commandType: CommandType.StoredProcedure) ?? throw new Exception($"User with email '{model.Email}' not found.");
-                if (!BCrypt.Net.BCrypt.Verify(model.Password, user.Password))
-                {
-                    throw new Exception($"Wrong Password");
-                }
+                var user = await connection.QueryFirstOrDefaultAsync<User>("spGetUserByEmail", new { model.Email }, commandType: CommandType.StoredProcedure);
+
+                if (user == null) throw new Exception($"User with email '{model.Email}' not found.");
+
+                if (!BCrypt.Net.BCrypt.Verify(model.Password, user.Password)) throw new Exception($"Wrong Password");
 
                 return _auth.GenerateJwtToken(user);
             }
