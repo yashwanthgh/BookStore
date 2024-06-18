@@ -20,6 +20,7 @@ namespace Repository.Services
 
             parameters.Add("Name", model.Name, DbType.String);
             parameters.Add("Email", model.Email, DbType.String);
+            parameters.Add("PhoneNumber", model.PhoneNumber, DbType.String);
             parameters.Add("Password", BCrypt.Net.BCrypt.HashPassword(model.Password), DbType.String);
 
             using (var connection = _context.CreateConnection())

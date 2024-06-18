@@ -19,6 +19,8 @@ internal class Program
         builder.Services.AddScoped<Business.Interfaces.ILogin, Business.Services.Login>();
         builder.Services.AddScoped<Repository.Interfaces.IRegisteration, Repository.Services.Registeration>();
         builder.Services.AddScoped<Business.Interfaces.IRegisteration, Business.Services.Registeration>();
+        builder.Services.AddScoped<Business.Interfaces.IBook, Business.Services.Book>();
+        builder.Services.AddScoped<Repository.Interfaces.IBook, Repository.Services.Book>();
 
         // Jwt 
         var jwtSettings = builder.Configuration.GetSection("JwtSetting").Get<JwtSettingModel>();

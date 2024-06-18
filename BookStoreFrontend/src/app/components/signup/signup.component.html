@@ -6,15 +6,17 @@
     <mat-form-field appearance="outline" class="full-width">
       <mat-label>name</mat-label>
       <input matInput placeholder="enter your name" formControlName="name">
+      <mat-error *ngIf="submitted && signupControll['name']?.hasError('required')">Name required</mat-error>
     </mat-form-field>
-    <mat-error *ngIf="submitted && signupControll['name']?.hasError('required')">Name required</mat-error>
+
 
     <mat-form-field appearance="outline" class="full-width">
       <mat-label>email</mat-label>
       <input matInput placeholder="enter your email" formControlName="email">
+      <mat-error *ngIf="submitted && signupControll['email']?.hasError('required')">Email required</mat-error>
+      <mat-error *ngIf="submitted && signupControll['email']?.hasError('email')">Incorrect Email Format</mat-error>
     </mat-form-field>
-    <mat-error *ngIf="submitted && signupControll['email']?.hasError('required')">Email required</mat-error>
-    <mat-error *ngIf="submitted && signupControll['email']?.hasError('email')">Incorrect Email Format</mat-error>
+
 
     <div class="side-by-side">
       <mat-form-field appearance="outline" class="half-width">
@@ -25,8 +27,10 @@
         <mat-label>confirm password</mat-label>
         <input matInput  placeholder="enter confirm password" formControlName="confirmpassword">
       </mat-form-field>
+      
       <mat-error *ngIf="submitted && signupControll['password']?.hasError('required')">Password required</mat-error>
       <mat-error *ngIf="submitted && signupControll['password']?.hasError('minlength')">Password must be 8 characters with special character & numbers</mat-error>
+
     </div>
 
     <div class="button-container">
