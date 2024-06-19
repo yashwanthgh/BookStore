@@ -17,7 +17,13 @@ namespace Presentation.Controllers
             try
             {
                 var token = await _login.LoginUser(model);
-                return Ok($"Token: {token}");
+                var response = new ResponseModel<string>
+                {
+                    Success = true,
+                    Message = "Login Successful!",
+                    Data = token
+                };
+                return Ok(response);
             }
             catch (Exception ex)
             {

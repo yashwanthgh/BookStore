@@ -32,7 +32,7 @@ export class SigninComponent implements OnInit {
     }
     const {email, password} = this.singinForm.value
     this.userService.signinCall({email:email, password:password}).subscribe(
-      (res: any) => {console.log(res), localStorage.setItem("token", res.data); this.router.navigate(["/signup"])}, (err)=> console.log(err))
+      (res: any) => {console.log(res.data), localStorage.setItem("token", res.data); this.router.navigate(["/dashboard/book"])}, (err)=> console.log(err))
     console.log(this.signinControll)
   }
 

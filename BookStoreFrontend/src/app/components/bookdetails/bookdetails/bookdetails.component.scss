@@ -1,0 +1,123 @@
+body {
+    font-family: Arial, sans-serif; 
+}
+
+.book-details-container {
+    width: 700px;
+    height: auto;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    display: flex;
+    margin: 20px auto;
+    font-family: 'Helvetica', sans-serif;
+}
+
+.left-section {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.right-section {
+    flex: 1;
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.buttons-container {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+
+.buttons-container button {
+    width: calc(50% - 5px);
+    padding: 8px 12px;
+    font-size: 14px;
+}
+
+.book-image {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.book-title {
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.author-container {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 10px;
+}
+
+.book-author-prefix {
+    font-weight: normal;
+    font-size: 16px;
+    margin-right: 5px;
+}
+
+.book-author-name {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+h3 {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.rating-container {
+    background-color: green;
+    width: 40px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.rating-stars {
+    font-size: 14px;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.book-price {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.customer-feedback {
+    margin-top: 20px;
+    align-self: stretch;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.star-icons mat-icon {
+    margin-right: 2px;
+}
+
+.wish-list-button-content {
+    display: flex; 
+    flex-direction: row;
+    align-items: center;
+}
+
+.wish-list-button-content mat-icon {
+    margin-right: 5px;
+}

@@ -19,4 +19,8 @@ export class HttpService {
   signupApi(data: any) {
     return this.httpClient.post('http://localhost:5277/api/register', data);
   }
+
+  getBooksApi(){
+    return this.httpClient.get('http://localhost:5277/api/getBooks', {headers: this.authHeader});
+  }
 }

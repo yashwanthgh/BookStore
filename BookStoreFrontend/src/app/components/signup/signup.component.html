@@ -17,6 +17,12 @@
       <mat-error *ngIf="submitted && signupControll['email']?.hasError('email')">Incorrect Email Format</mat-error>
     </mat-form-field>
 
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>number</mat-label>
+      <input matInput placeholder="enter your number" formControlName="phoneNumber">
+      <mat-error *ngIf="submitted && signupControll['phoneNumber']?.hasError('required')">Number required</mat-error>
+      <mat-error *ngIf="submitted && signupControll['phoneNumber']?.hasError('phoneNumber')">Incorrect number</mat-error>
+    </mat-form-field>
 
     <div class="side-by-side">
       <mat-form-field appearance="outline" class="half-width">
@@ -35,7 +41,7 @@
 
     <div class="button-container">
       <button mat-flat-button class="signin" routerLink="/signin">signin insted</button>
-      <button mat-flat-button class="signup" type="submit">signup</button>
+      <button mat-flat-button class="signup" type="submit" (click)="handleSignup">signup</button>
     </div>
   </form>
 </div>

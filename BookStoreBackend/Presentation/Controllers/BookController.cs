@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Model.BookModels;
+using Model.ResponseModels;
+using Repository.Entities;
 
 namespace Presentation.Controllers
 {
@@ -19,11 +21,19 @@ namespace Presentation.Controllers
             try
             {
                 var book = await _book.AddBook(model);
-                return Ok(book);
+                return Ok(new ResponseModel
+                {
+                    Success = book,
+                    Message = "Book Added Successfully!"
+                });
             }
             catch (Exception ex)
             {
-                return Ok($"Unable to add book. {ex.Message}");
+                return Ok(new ResponseModel
+                {
+                    Success = false,
+                    Message = $"Unable to add book. {ex.Message}"
+                });
             }
         }
 
@@ -34,11 +44,20 @@ namespace Presentation.Controllers
             try
             {
                 var books = await _book.GetAllBook();
-                return Ok(books);
+                return Ok(new ResponseModel<IEnumerable<Book>>
+                {
+                    Success = true,
+                    Message = "Books Fetched Successfully",
+                    Data = books
+                });
             }
             catch (Exception ex)
             {
-                return Ok($"Unable to fetch books. {ex.Message}");
+                return Ok(new ResponseModel
+                {
+                    Success = false,
+                    Message = $"Unable to fetch books. {ex.Message}"
+                });
             }
         }
     }

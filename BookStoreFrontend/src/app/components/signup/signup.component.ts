@@ -19,6 +19,7 @@ export class SignupComponent implements OnInit {
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
+      phoneNumber:['', [Validators.required,Validators.minLength(10)]],
       confirmpassword:['', [Validators.required, Validators.minLength(6)]]}
     );
   }
@@ -27,10 +28,11 @@ export class SignupComponent implements OnInit {
 
   handleSignup(){
     console.log(this.signupForm.controls);
-    const{name,email,password}=this.signupForm.value;
+    const{name,email,phoneNumber,password}=this.signupForm.value;
     this.userService.signupCall({
       name: name,
       email: email,
+      phoneNumber: phoneNumber,
       password: password
     }).subscribe((res)=>console.log(res),
     (err)=>console.log(err))

@@ -16,11 +16,21 @@ namespace Presentation.Controllers
             try
             {
                 await _registeration.UserRegister(model);
-                return Ok("Registration successful!");
+                var response = new ResponseModel
+                {
+                    Success = true,
+                    Message = "Registration successful!"
+                };
+                return Ok(response);
             }
             catch (Exception ex)
             {
-                return Ok($"Null Data, {ex.Message}");
+                var response = new ResponseModel
+                {
+                    Success = false,
+                    Message = $"Registration Unsuccessful!. {ex.Message}"
+                };
+                return Ok(response);
             }
 
         }
