@@ -1,0 +1,15 @@
+<div class="order-confirmation-container" *ngIf="address">
+    <h2>Order Confirmation</h2>
+    <div class="order-details">
+      <p><strong>Name:</strong> {{ address.name }}</p>
+      <p><strong>Number:</strong> {{ address.number }}</p>
+      <p><strong>Email:</strong> {{ address.email }}</p>
+      <p><strong>Address:</strong> {{ address.address}}</p>
+      <p> {{ address.city}}</p>
+      <p> {{ address.state}}</p>
+      <p><strong>Total Price:</strong> $. {{ totalPrice.toFixed(2) }}</p>
+    </div>
+    <div class="confirmation-message">
+      <p>Your order has been placed successfully!</p>
+    </div>
+  </div>

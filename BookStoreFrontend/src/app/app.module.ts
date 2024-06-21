@@ -23,6 +23,7 @@ import { CartComponent } from './components/cart/cart/cart.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { UserComponent } from './components/user/user/user.component';
 import { AddressComponent } from './components/address/address/address.component';
+import { OrderComponent } from './components/order/order/order.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { AddressComponent } from './components/address/address/address.component
     BookdetailsComponent,
     CartComponent,
     UserComponent,
-    AddressComponent
+    AddressComponent,
+    OrderComponent
   ],
   imports: [
     BrowserModule,

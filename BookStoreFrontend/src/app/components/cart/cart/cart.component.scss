@@ -1,149 +1,127 @@
-.cart-outer-cnt
-{
+.cart-outer-cnt {
     margin-top: 3%;
     height: fit-content;
-    width: 65%;
+    width: 50%; /* Reduced width */
     border: 1px solid rgba(130, 130, 130, 0.644);
     background-color: #ffffff;
-    margin-left: 11%;
+    margin-left: auto;
+    margin-right: auto;
     border-radius: 4px;
     margin-bottom: 2.5%;
+    padding: 10px;
+    position: relative; /* Allows for relative positioning of the place order button */
+    padding-bottom: 60px; /* Space for the button */
 }
-.count-cnt
-{
-    display: flex;
-    align-items:center ;
-    justify-content: center;
-    flex-wrap: wrap;
-    // justify-content: space-around;
-    gap: 60%;
-    margin-bottom: -3%;
-}
-.loc-icon-cnt{
-    padding: 5px;
-    height: 18%;
-    width: fit-content;
-    border: 1px solid;
-display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
 
-}
-.loc-icon
-{
+.cart-header {
     display: flex;
     align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
+    justify-content: flex-start; /* Aligns "My Cart" to the left */
+    margin-bottom: 10px;
+    font-size: 1.5em;
+    font-weight: bold;
+    padding-left: 10px; /* Adds a little left padding */
 }
-.img-cnt
-{
 
-    height: 100%;
-    padding: 35px;
+.cart-items {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: end;
+    padding: 10px 0;
+}
+
+.item-divider {
+    margin: 0;
+    border: none;
+    border-top: 1px solid rgba(130, 130, 130, 0.644);
+}
+
+.img-cnt {
     display: flex;
     gap: 10px;
     justify-content: space-between;
     flex-wrap: wrap;
     align-items: end;
+}
 
-}
-.content img{
-    height:80px;
+.content img {
+    height: 180px; 
     display: flex;
-    
 }
-.content
-{
+
+.content {
     display: flex;
     flex-direction: row;
     align-items: center;
     flex-wrap: wrap;
     gap: 15px;
-    
 }
-.booktitle
-{
+
+.booktitle {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     font-size: large;
     font-weight: 500;
 }
-.originalprice
-{
+
+.originalprice {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-
-
     color: #616161;
     text-decoration: line-through;
     font-size: 80%;
     font-weight: 100;
 }
-.sellingprice
-{
-    display: flex;
-    // flex-direction: column;
-    flex-wrap: wrap;
 
+.sellingprice {
+    display: flex;
+    flex-wrap: wrap;
     font-weight: bold;
 }
-.button1
-{
+
+.button1 {
     height: fit-content;
-    background-color: rgb(29, 29, 155) !important;
+    background-color:  #1976d2 !important;
     color: white !important;
-    margin-left: 200px;
+    margin-left: 20px;
 }
-.button2
-{
-    height: fit-content;
-    background-color: rgb(29, 29, 155) !important;
+
+.place-order-button {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    background-color:  #1976d2 !important;
     color: white !important;
-    //margin-left: 5%;
-}
-
-
-.count
-{
-    // height: 100%;
-    display: flex;
-    // flex-direction: column;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    width: 65%;
-}.countvalue
-{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    height: 10%;
-    width: 30%;
-    border: 1px solid;
-}
-.increament
-{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 20px;
-    width: 15%;
-    border: 1px solid;
-    border-radius: 100%;
-}
-.bottom
-{
-    height: 10%;
-    width: 65%;
-    border: 1px solid rgba(130, 130, 130, 0.644);
-    background-color:#ffffff;
-    margin-left: 11%;
     border-radius: 4px;
-    margin-top: 1%;
+}
+
+.buttons-container {
+    width: 50%; /* Align width with main cart container */
+    margin-left: auto;
+    margin-right: auto;
     display: flex;
-    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 1%;
+}
+
+.address-button, .order-summary-button {
+    width: 48%; /* Adjusted width to fit side by side */
+    background-color: #1976d2 !important;
+    color: white !important;
+    padding: 10px;
+    font-size: 1.2em;
+    border-radius: 4px;
+    text-align: center;
 }

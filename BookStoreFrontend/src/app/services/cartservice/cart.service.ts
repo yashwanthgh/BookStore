@@ -6,6 +6,9 @@ import { HttpService } from '../httpservice/http.service';
 })
 export class CartService {
 
+  totalPrice: any;
+  address: any;
+
   constructor(private httpService:HttpService) { }
 
   getCartApi(){
@@ -18,5 +21,21 @@ export class CartService {
 
   unCartApi(data: any){
     return this.httpService.unCartApi(data);
+  }
+
+  getPrice(){
+    return this.totalPrice;
+  }
+
+  setPrice(data: any){
+    this.totalPrice = data;
+  }
+
+  getAddress(){
+    return this.address;
+  }
+
+  setAddress(data: any){
+    this.address = data;
   }
 }

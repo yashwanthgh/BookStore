@@ -10,6 +10,7 @@ import { BookdetailsComponent } from './components/bookdetails/bookdetails/bookd
 import { CartComponent } from './components/cart/cart/cart.component';
 import { UserComponent } from './components/user/user/user.component';
 import { AddressComponent } from './components/address/address/address.component';
+import { OrderComponent } from './components/order/order/order.component';
 
 const routes: Routes = [
   { path: 'signup', component: SignupComponent },
@@ -24,7 +25,8 @@ const routes: Routes = [
       { path: 'bookdetails/:bookId', component: BookdetailsComponent },
       { path: 'cart', component: CartComponent},
       { path: 'profile', component: UserComponent },
-      { path: 'address', component: AddressComponent }
+      { path: 'address', component: AddressComponent },
+      { path: 'order', component: OrderComponent}
     ],
   },
 ];
