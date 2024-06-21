@@ -23,6 +23,8 @@ internal class Program
         builder.Services.AddScoped<Repository.Interfaces.IBook, Repository.Services.Book>();
         builder.Services.AddScoped<Repository.Interfaces.ICart, Repository.Services.Cart>();
         builder.Services.AddScoped<Business.Interfaces.ICart, Business.Services.Cart>();
+        builder.Services.AddScoped<Business.Interfaces.IAddress, Business.Services.Address>();
+        builder.Services.AddScoped<Repository.Interfaces.IAddress, Repository.Services.Address>();
 
         // Jwt 
         var jwtSettings = builder.Configuration.GetSection("JwtSetting").Get<JwtSettingModel>();

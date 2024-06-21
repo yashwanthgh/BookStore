@@ -1,9 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { DataService } from 'src/app/services/dataservice/data.service';
+import { CartService } from 'src/app/services/cartservice/cart.service';
 import { HttpService } from 'src/app/services/httpservice/http.service';
 import { HEART_ICON, STAR_ICON } from 'src/assets/svg-icons';
 
@@ -13,22 +14,20 @@ import { HEART_ICON, STAR_ICON } from 'src/assets/svg-icons';
   styleUrls: ['./bookdetails.component.scss'],
 })
 export class BookdetailsComponent implements OnInit, OnDestroy {
+  cartForm!: FormGroup;
   subscription: Subscription = new Subscription();
   selectBook: any;
   bookData: any;
   bookId!: number;
-  count: number = 1;
-  bookCount: boolean = false;
-  cartId!: number;
-  tempcart: any[] = [];
+  
 
   constructor(
     iconRegistry: MatIconRegistry,
     sanitizer: DomSanitizer,
-    private router: Router,
     private httpService: HttpService,
     private route: ActivatedRoute,
-    private dataService: DataService
+    private cartService: CartService,
+    private formBuilder: FormBuilder
   ) {
     iconRegistry.addSvgIconLiteral(
       'heart-icon',
@@ -38,6 +37,7 @@ export class BookdetailsComponent implements OnInit, OnDestroy {
       'star-icon',
       sanitizer.bypassSecurityTrustHtml(STAR_ICON)
     );
+    
   }
 
   ngOnInit(): void {
@@ -46,17 +46,33 @@ export class BookdetailsComponent implements OnInit, OnDestroy {
   
       this.route.params.subscribe((res2) => {
         this.selectBook = this.bookData.find((e: any) => e.bookId == res2['bookId']);
+        console.log(this.selectBook);
       });
     });
   }
 
   handleAddBook(data: any) {
 
-    this.bookCount = !this.bookCount;
+    this.cartForm = this.formBuilder.group({
+      quantity: [1],  
+      bookId: data.bookId,   
+      isOrdered: [false], 
+      isUnCarted: [false]  
+    });
 
-    var tempdata = [];
-    tempdata[tempdata.length] = data;
-    this.dataService.changeTempCart(tempdata);
+    const { quantity, bookId, isOrdered, isUnCarted } = this.cartForm.value;
+
+    const cartItem = {
+      quantity: quantity,
+      bookId: bookId,
+      isOrdered: isOrdered,
+      isUnCarted: isUnCarted
+    };
+
+    this.cartService.addToCartApi(cartItem).subscribe(
+      (res) => console.log('Added to cart:', res),
+      (err) => console.error('Error adding to cart:', err)
+    );
   }
 
   ngOnDestroy(): void {

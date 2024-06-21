@@ -19,6 +19,10 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { BookComponent } from './components/book/book/book.component';
 import { BookcontainerComponent } from './components/bookcontainer/bookcontainer/bookcontainer.component';
 import { BookdetailsComponent } from './components/bookdetails/bookdetails/bookdetails.component';
+import { CartComponent } from './components/cart/cart/cart.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { UserComponent } from './components/user/user/user.component';
+import { AddressComponent } from './components/address/address/address.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +33,10 @@ import { BookdetailsComponent } from './components/bookdetails/bookdetails/bookd
     DashboardComponent,
     BookComponent,
     BookcontainerComponent,
-    BookdetailsComponent
+    BookdetailsComponent,
+    CartComponent,
+    UserComponent,
+    AddressComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +50,8 @@ import { BookdetailsComponent } from './components/bookdetails/bookdetails/bookd
     HttpClientModule,
     MatToolbarModule,
     MatIconModule,
-    MatCardModule
+    MatCardModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

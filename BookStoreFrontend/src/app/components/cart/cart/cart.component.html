@@ -1,0 +1,29 @@
+<div class="cart-outer-cnt" *ngFor="let book of cartList">
+  <br />
+  <div class="count-cnt">
+    <span>My cart</span>
+  </div>
+  <br />
+  <div class="img-cnt">
+    <div class="content">
+      <img src="{{ book.bookImage }}" alt="" />
+      <div>
+        <span class="booktitle">{{ book.bookName }}</span>
+        <span style="color: #616161">by {{ book.authorName }}</span>
+        <div class="rating-cnt">
+          <span class="sellingprice"
+            >$. {{ book.price
+            }}<span class="originalprice">$.100</span></span
+          >
+          <div class="count"></div>
+        </div>
+      </div>
+    </div>
+    <button class="button1" mat-raised-button color="primary" (click)="handelClear(book)">Clear</button>
+    <button class="button2" mat-raised-button color="primary">
+      PLACE ORDER
+    </button>
+  </div>
+</div>
+<div class="bottom" routerLink="/dashboard/address"><button>Address Details</button></div>
+<div class="bottom">Order Summer</div>

@@ -19,7 +19,6 @@ export class BookComponent implements OnInit {
     this.bookService.getBooksCall().subscribe(
       (res: any) => {
         this.bookList = res.data;
-        // this.dataService.changeAllBookList(res.data);
       },
       (err) => console.log("error: ",err)
     );

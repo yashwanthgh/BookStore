@@ -1,0 +1,39 @@
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+
+  .profile-card {
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px;
+  }
+
+  .profile-card h2 {
+    margin-bottom: 10px;
+    color: #333;
+  }
+
+  .profile-card p {
+    margin: 5px 0;
+    color: #666;
+  }
+
+  .profile-card .email {
+    font-style: italic;
+  }
+</style>
+<body>
+  <div class="profile-card" *ngIf="address">
+    <h2>{{address.name}}</h2>
+    <p>Email: <span class="email">{{address.email}}</span></p>
+  </div>
+</body>

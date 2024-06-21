@@ -1,52 +1,54 @@
-<div class="book-details-container">
+
+<div class="book-details-container" *ngIf="selectBook">
     <div class="left-section">
-        <img *ngIf="selectBook" [src]="selectBook.bookImage" class="book-image" />
+      <img *ngIf="selectBook?.bookImage" [src]="selectBook?.bookImage" class="book-image" />
+      
+      <div class="buttons-container">
+        <button class="btn-add-to-bag" mat-raised-button color="primary" (click)="handleAddBook(selectBook)">
+          ADD TO BAG
+        </button>
         
-        <div class="buttons-container">
-            <button class="btn-add-to-bag" mat-raised-button color="primary" (click)="handleAddBook(selectBook)">
-                ADD TO BAG
-            </button>
-            
-            <button class="btn-wish-list" mat-raised-button color="primary">
-                <div class="wish-list-button-content">
-                    <mat-icon svgIcon="heart-icon" aria-hidden="false" aria-label="heart SVG icon"></mat-icon>
-                    <span>WISH LIST</span>
-                </div>
-            </button>
-        </div>
+        <button class="btn-wish-list" mat-raised-button color="primary">
+          <div class="wish-list-button-content">
+            <mat-icon svgIcon="heart-icon" aria-hidden="false" aria-label="heart SVG icon"></mat-icon>
+            <span>WISH LIST</span>
+          </div>
+        </button>
+      </div>
     </div>
-
+  
     <div class="right-section">
-        <strong class="book-title">{{ selectBook.title }}</strong>
-        <div class="author-container">
-            <span class="book-author-prefix">By</span> 
-            <span class="book-author-name">{{ selectBook.author }}</span>
+      <strong class="book-title">{{ selectBook?.title }}</strong>
+      <div class="author-container">
+        <span class="book-author-prefix">By</span> 
+        <span class="book-author-name">{{ selectBook?.author }}</span>
+      </div>
+  
+      <div class="rating-container">
+        <div class="rating-stars">
+          <span>4.5*</span>
         </div>
-
-        <div class="rating-container">
-            <div class="rating-stars">
-                <span>4.5*</span>
-            </div>
-        </div>
-
-        <span class="book-price">$. {{ selectBook.price }}</span>
-        <hr />
-        <h3>Book Details</h3>
-        <p>{{ selectBook.description }}</p>
-        <hr />
-        <h3>Customer Feedback</h3>
-
-        <div class="customer-feedback">
-            <mat-card>
-                <span>Overall Rating</span>
-                <div class="star-icons">
-                    <mat-icon svgIcon="star-icon" aria-hidden="false" aria-label="heart SVG icon"></mat-icon>
-                    <mat-icon svgIcon="star-icon" aria-hidden="false" aria-label="heart SVG icon"></mat-icon>
-                    <mat-icon svgIcon="star-icon" aria-hidden="false" aria-label="heart SVG icon"></mat-icon>
-                    <mat-icon svgIcon="star-icon" aria-hidden="false" aria-label="heart SVG icon"></mat-icon>
-                    <mat-icon svgIcon="star-icon" aria-hidden="false" aria-label="heart SVG icon"></mat-icon>
-                </div>
-            </mat-card>
-        </div>
+      </div>
+  
+      <span class="book-price">$. {{ selectBook?.price }}</span>
+      <hr />
+      <h3>Book Details</h3>
+      <p>{{ selectBook?.description }}</p>
+      <hr />
+      <h3>Customer Feedback</h3>
+  
+      <div class="customer-feedback">
+        <mat-card>
+          <span>Overall Rating</span>
+          <div class="star-icons">
+            <mat-icon svgIcon="star-icon" aria-hidden="false" aria-label="heart SVG icon"></mat-icon>
+            <mat-icon svgIcon="star-icon" aria-hidden="false" aria-label="heart SVG icon"></mat-icon>
+            <mat-icon svgIcon="star-icon" aria-hidden="false" aria-label="heart SVG icon"></mat-icon>
+            <mat-icon svgIcon="star-icon" aria-hidden="false" aria-label="heart SVG icon"></mat-icon>
+            <mat-icon svgIcon="star-icon" aria-hidden="false" aria-label="heart SVG icon"></mat-icon>
+          </div>
+        </mat-card>
+      </div>
     </div>
-</div>
+  </div>
+  

@@ -52,15 +52,17 @@ namespace Presentation.Controllers
 
         [Authorize]
         [HttpGet("getCartBooks")]
-        public async Task<IActionResult> GetAllCartBooks(int UserId)
+        public async Task<IActionResult> GetAllCartBooks()
         {
             try
             {
+                var userIdClime = User.FindFirstValue("UserId");
+                int userId = Convert.ToInt32(userIdClime);
                 return Ok(new ResponseModel<IEnumerable<CartResponse>>
                 {
                     Success = true,
                     Message = "Cart Books fetched uccessfully",
-                    Data = await _Cart.GetCartByUserId(UserId)
+                    Data = await _Cart.GetCartByUserId(userId)
                 });
             }
             catch (Exception ex)
@@ -74,11 +76,13 @@ namespace Presentation.Controllers
         }
 
         [Authorize]
-        [HttpPatch("uncart")]
-        public async Task<IActionResult> UnCart(int cartId, int userId)
+        [HttpPatch("uncart{cartId}")]
+        public async Task<IActionResult> UnCart(int cartId)
         {
             try
             {
+                var userIdClime = User.FindFirstValue("UserId");
+                int userId = Convert.ToInt32(userIdClime);
                 await _Cart.UnCart(cartId, userId);
                 return Ok(new ResponseModel
                 {

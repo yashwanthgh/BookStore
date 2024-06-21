@@ -15,4 +15,12 @@ export class UserService {
   signupCall(data:any){
     return this.httpService.signupApi(data);
   }
+
+  addUserAddress(data: any){
+    return this.httpService.addAddressApi(data);
+  }
+
+  getUserAddress(){
+    return this.httpService.getAddressApi();
+  }
 }

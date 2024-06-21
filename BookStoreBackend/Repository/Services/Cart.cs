@@ -33,7 +33,7 @@ namespace Repository.Services
         {
             using (var connection = _context.CreateConnection())
             {
-                return await connection.QueryAsync<CartResponse>("spAddToCart", new {UserId = id}, commandType: System.Data.CommandType.StoredProcedure);
+                return await connection.QueryAsync<CartResponse>("GetCartForUserId", new {UserId = id}, commandType: System.Data.CommandType.StoredProcedure);
             }
         }
 
