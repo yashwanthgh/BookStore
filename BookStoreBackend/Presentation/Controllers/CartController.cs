@@ -1,11 +1,9 @@
 ﻿using Business.Interfaces;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Model.CartModels;
 using System.Security.Claims;
 using Model.ResponseModels;
-using Repository.Entities;
 
 namespace Presentation.Controllers
 {

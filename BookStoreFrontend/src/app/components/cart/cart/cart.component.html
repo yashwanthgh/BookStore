@@ -15,7 +15,11 @@
                 $. {{ book.price }}
                 <span class="originalprice">$.100</span>
               </span>
-              <div class="count"></div>
+              <div class="count">
+                <button (click)="decrementQuantity(book)" [disabled]="book.quantity <= 1">-</button>
+                <span>{{ book.quantity }}</span>
+                <button (click)="incrementQuantity(book)">+</button>
+              </div>
             </div>
           </div>
         </div>

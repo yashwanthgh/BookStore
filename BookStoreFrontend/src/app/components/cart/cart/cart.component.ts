@@ -1,6 +1,6 @@
-import { CartService } from 'src/app/services/cartservice/cart.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { CartService } from 'src/app/services/cartservice/cart.service';
 import { UserService } from 'src/app/services/userservice/user.service';
 
 @Component({
@@ -10,7 +10,6 @@ import { UserService } from 'src/app/services/userservice/user.service';
 })
 export class CartComponent implements OnInit, OnDestroy {
   cartList: any[] = [];
-
   subscription: Subscription = new Subscription();
 
   constructor(
@@ -19,10 +18,27 @@ export class CartComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.cartService.getCartApi().subscribe((res: any) => {
-      this.cartList = res.data.filter((item: any) => item.isUnCarted === false);
-      console.log(this.cartList);
-    });
+    this.subscription.add(
+      this.cartService.getCartApi().subscribe((res: any) => {
+        this.cartList = res.data
+          .filter((item: any) => item.isUnCarted === false)
+          .map((item: any) => ({
+            ...item,
+            quantity: item.quantity || 1, 
+          }));
+        console.log(this.cartList);
+      })
+    );
+  }
+
+  incrementQuantity(book: any) {
+    book.quantity++;
+  }
+
+  decrementQuantity(book: any) {
+    if (book.quantity > 1) {
+      book.quantity--;
+    }
   }
 
   handelClear(data: any) {
@@ -39,19 +55,22 @@ export class CartComponent implements OnInit, OnDestroy {
   }
 
   handelPlaceOrder() {
-    let price = this.cartList.reduce((total, item) => total + item.price, 0);
-    this.cartService.setPrice(price);
-    console.log(price);
+    const totalPrice = this.cartList.reduce(
+      (total, item) => total + item.price * item.quantity, 
+      0
+    );
+    this.cartService.setPrice(totalPrice);
+    console.log('Total price:', totalPrice);
 
     this.userService.getUserAddress().subscribe(
-  (address: any) => {
-    this.cartService.setAddress(address.data);
-    console.log(address.data);
-  },
-  (error) => {
-    console.error('Error fetching address:', error);
-  }
-);
+      (address: any) => {
+        this.cartService.setAddress(address.data);
+        console.log('Address data:', address.data);
+      },
+      (error) => {
+        console.error('Error fetching address:', error);
+      }
+    );
   }
 
   ngOnDestroy(): void {

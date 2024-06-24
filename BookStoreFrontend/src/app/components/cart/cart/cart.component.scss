@@ -1,7 +1,7 @@
 .cart-outer-cnt {
     margin-top: 3%;
     height: fit-content;
-    width: 50%; /* Reduced width */
+    width: 50%; 
     border: 1px solid rgba(130, 130, 130, 0.644);
     background-color: #ffffff;
     margin-left: auto;
@@ -9,18 +9,18 @@
     border-radius: 4px;
     margin-bottom: 2.5%;
     padding: 10px;
-    position: relative; /* Allows for relative positioning of the place order button */
-    padding-bottom: 60px; /* Space for the button */
+    position: relative; 
+    padding-bottom: 60px;
 }
 
 .cart-header {
     display: flex;
     align-items: center;
-    justify-content: flex-start; /* Aligns "My Cart" to the left */
+    justify-content: flex-start; 
     margin-bottom: 10px;
     font-size: 1.5em;
     font-weight: bold;
-    padding-left: 10px; /* Adds a little left padding */
+    padding-left: 10px; 
 }
 
 .cart-items {
@@ -33,7 +33,7 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    align-items: end;
+    align-items: flex-end; 
     padding: 10px 0;
 }
 
@@ -48,7 +48,7 @@
     gap: 10px;
     justify-content: space-between;
     flex-wrap: wrap;
-    align-items: end;
+    align-items: flex-start; 
 }
 
 .content img {
@@ -90,9 +90,11 @@
 
 .button1 {
     height: fit-content;
-    background-color:  #1976d2 !important;
+    background-color: #1976d2 !important;
     color: white !important;
     margin-left: 20px;
+    border-radius: 4px; 
+    padding: 5px 10px; 
 }
 
 .place-order-button {
@@ -101,13 +103,43 @@
     right: 10px;
     padding: 10px 20px;
     font-size: 1.2em;
-    background-color:  #1976d2 !important;
+    background-color: #1976d2 !important;
     color: white !important;
     border-radius: 4px;
 }
 
+.count {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.count button {
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+    text-align: center;
+    border: 1px solid #ddd;
+    background-color: #f1f1f1; 
+    border-radius: 4px; 
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.count button:hover {
+    background-color: #ddd; 
+}
+
+.count span {
+    display: inline-block;
+    width: 40px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+}
+
 .buttons-container {
-    width: 50%; /* Align width with main cart container */
+    width: 50%; 
     margin-left: auto;
     margin-right: auto;
     display: flex;
@@ -117,11 +149,17 @@
 }
 
 .address-button, .order-summary-button {
-    width: 48%; /* Adjusted width to fit side by side */
+    width: 48%; 
     background-color: #1976d2 !important;
     color: white !important;
     padding: 10px;
     font-size: 1.2em;
     border-radius: 4px;
     text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.address-button:hover, .order-summary-button:hover {
+    background-color: #145ca1 !important; 
 }
